@@ -24,10 +24,10 @@ TERMUX_PKG_CONFFILES="share/nvim/sysinit.vim"
 termux_step_host_build() {
 	termux_setup_cmake
 
-	mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/deps
-	cd $TERMUX_PKG_HOSTBUILD_DIR/deps
-	cmake $TERMUX_PKG_SRCDIR/third-party
-	make -j 1
+	# mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/deps
+	# cd $TERMUX_PKG_HOSTBUILD_DIR/deps
+	# cmake $TERMUX_PKG_SRCDIR/third-party
+	# make -j 1
 
 	cd $TERMUX_PKG_SRCDIR
 	make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$TERMUX_PKG_HOSTBUILD_DIR -DUSE_BUNDLED_LUAROCKS=ON" install
