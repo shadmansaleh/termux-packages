@@ -6,7 +6,7 @@ TERMUX_PKG_VERSION=0.4.4
 TERMUX_PKG_REVISION=3
 TERMUX_PKG_SRCURL=https://github.com/neovim/neovim/archive/v${TERMUX_PKG_VERSION}.tar.gz
 TERMUX_PKG_SHA256=2f76aac59363677f37592e853ab2c06151cca8830d4b3fe4675b4a52d41fc42c
-# TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libluajit, libunibilium"
+TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libunibilium"
 TERMUX_PKG_HOSTBUILD=true
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
@@ -24,10 +24,10 @@ TERMUX_PKG_CONFFILES="share/nvim/sysinit.vim"
 termux_step_host_build() {
 	termux_setup_cmake
 
-	# mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/deps
-	# cd $TERMUX_PKG_HOSTBUILD_DIR/deps
-	# cmake $TERMUX_PKG_SRCDIR/third-party
-	# make -j 1
+	mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/deps
+	cd $TERMUX_PKG_HOSTBUILD_DIR/deps
+	cmake $TERMUX_PKG_SRCDIR/third-party
+	make -j 1
 
 	cd $TERMUX_PKG_SRCDIR
 	make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$TERMUX_PKG_HOSTBUILD_DIR -DUSE_BUNDLED_LUAROCKS=ON" install
