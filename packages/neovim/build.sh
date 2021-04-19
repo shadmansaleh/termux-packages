@@ -5,7 +5,7 @@ TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION=nightly
 TERMUX_PKG_REVISION=1
 TERMUX_PKG_SRCURL=https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz
-TERMUX_PKG_SHA256=8dd153152fc9606afc0b71faa50cb46f9574b34aafd5ffe39561aebe2ff18d17
+# TERMUX_PKG_SHA256=8dd153152fc9606afc0b71faa50cb46f9574b34aafd5ffe39561aebe2ff18d17
 TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libluajit, libunibilium"
 TERMUX_PKG_HOSTBUILD=true
 
