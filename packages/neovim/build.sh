@@ -7,7 +7,6 @@ TERMUX_PKG_REVISION=3
 TERMUX_PKG_SRCURL=https://github.com/neovim/neovim/archive/v${TERMUX_PKG_VERSION}.tar.gz
 TERMUX_PKG_SHA256=2f76aac59363677f37592e853ab2c06151cca8830d4b3fe4675b4a52d41fc42c
 TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libluajit, libunibilium"
-TERMUX_PKG_BUILD_DEPENDS="luajit"
 TERMUX_PKG_HOSTBUILD=true
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
@@ -15,11 +14,10 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -DGETTEXT_MSGFMT_EXECUTABLE=$(which msgfmt)
 -DGETTEXT_MSGMERGE_EXECUTABLE=$(which msgmerge)
 -DGPERF_PRG=$TERMUX_PKG_HOSTBUILD_DIR/deps/usr/bin/gperf
--DLUA_PRG=$(which luajit)
+-DLUA_PRG=$TERMUX_PKG_HOSTBUILD_DIR/deps/usr/bin/luajit-2.1.0-beta3
 -DPKG_CONFIG_EXECUTABLE=$(which pkg-config)
 -DXGETTEXT_PRG=$(which xgettext)
 -DLUAJIT_INCLUDE_DIR=$TERMUX_PREFIX/include/luajit-1:2
--DLUAJIT_LIBRARY=$TERMUX_PREFIX/lib/libluajit.so
 "
 TERMUX_PKG_CONFFILES="share/nvim/sysinit.vim"
 
