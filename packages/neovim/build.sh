@@ -7,6 +7,7 @@ TERMUX_PKG_REVISION=3
 TERMUX_PKG_SRCURL=https://github.com/neovim/neovim/archive/v${TERMUX_PKG_VERSION}.tar.gz
 TERMUX_PKG_SHA256=2f76aac59363677f37592e853ab2c06151cca8830d4b3fe4675b4a52d41fc42c
 TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libluajit, libunibilium"
+TERMUX_PKG_BUILD_DEPENDS="luajit"
 TERMUX_PKG_HOSTBUILD=true
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
