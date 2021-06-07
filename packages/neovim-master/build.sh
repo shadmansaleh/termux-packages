@@ -32,7 +32,7 @@ termux_step_pre_configure() {
 }
 
 termux_step_make() {
-	termux_setup_cmake
+	# termux_setup_cmake
 
 	cd $TERMUX_PKG_SRCDIR
 	make -j 1 CMAKE_EXTRA_FLAGS=$NEOVIM_CONFIG_ARGS
