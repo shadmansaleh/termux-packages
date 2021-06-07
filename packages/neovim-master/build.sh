@@ -7,6 +7,7 @@ TERMUX_PKG_SRCURL=https://github.com/neovim/neovim.git
 TERMUX_PKG_GIT_BRANCH=$TERMUX_PKG_VERSION
 TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libunibilium"
 TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_BLACKLISTED_ARCHES="x86_64, i686"
 
 NEOVIM_CONFIG_ARGS="
 -DENABLE_JEMALLOC=OFF
