@@ -6,7 +6,6 @@ TERMUX_PKG_VERSION=master
 TERMUX_PKG_SRCURL=https://github.com/neovim/neovim.git
 TERMUX_PKG_GIT_BRANCH=$TERMUX_PKG_VERSION
 TERMUX_PKG_DEPENDS="libiconv, libuv, luv, libmsgpack, libandroid-support, libvterm, libtermkey, libunibilium"
-TERMUX_PKG_BUILD_DEPENDS='cmake, ninja'
 TERMUX_PKG_HOSTBUILD=true
 # TERMUX_PKG_BUILD_IN_SRC=true
 TERMUX_PKG_BLACKLISTED_ARCHES="x86_64, i686"
@@ -38,11 +37,11 @@ termux_step_host_build() {
 
 	mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/deps
 	cd $TERMUX_PKG_HOSTBUILD_DIR/deps
-	cmake $TERMUX_PKG_SRCDIR/third-party
+	cmake $TERMUX_PKG_SRCDIR/third-party $TERMUX_PKG_EXTRA_CONFIGURE_ARGS
 	CMAKE_EXTRA_FLAGS=$TERMUX_PKG_EXTRA_CONFIGURE_ARGS make -j1
 
 	cd $TERMUX_PKG_SRCDIR
-	make CMAKE_EXTRA_FLAGS=$TERMUX_PKG_EXTRA_CONFIGURE_ARGS install
+	CMAKE_EXTRA_FLAGS=$TERMUX_PKG_EXTRA_CONFIGURE_ARGS make install
 	make distclean
 	rm -Rf build/
 }
