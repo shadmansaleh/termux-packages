@@ -42,7 +42,7 @@ termux_step_host_build() {
 	CMAKE_EXTRA_FLAGS=$TERMUX_PKG_EXTRA_CONFIGURE_ARGS make -j1
 
 	cd $TERMUX_PKG_SRCDIR
-	make CMAKE_EXTRA_FLAGS=$NEOVIM_CONFIG_ARGS install
+	make CMAKE_EXTRA_FLAGS=$TERMUX_PKG_EXTRA_CONFIGURE_ARGS install
 	make distclean
 	rm -Rf build/
 }
