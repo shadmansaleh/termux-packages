@@ -101,7 +101,7 @@ termux_step_setup_variables() {
 	TERMUX_PKG_SHA256=""
 	TERMUX_PKG_GIT_BRANCH="" # branch defaults to 'v$TERMUX_PKG_VERSION' unless this variable is defined
 	TERMUX_PKG_TMPDIR=$TERMUX_TOPDIR/$TERMUX_PKG_NAME/tmp
-	TERMUX_PKG_HOSTBUILD_DIR=$TERMUX_TOPDIR/$TERMUX_PKG_NAME/host-build
+	TERMUX_PKG_HOSTBUILD_DIR=$TERMUX_PKG_SRCDIR/.deps
 	TERMUX_PKG_PLATFORM_INDEPENDENT=false
 	TERMUX_PKG_NO_STATICSPLIT=false
 	TERMUX_PKG_REVISION="0" # http://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version
