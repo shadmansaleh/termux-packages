@@ -9,6 +9,7 @@ TERMUX_PKG_BUILD_DEPENDS="ninja"
 TERMUX_PKG_HOSTBUILD=true
 
 termux_step_host_build() {
+	cd $TERMUX_PKG_SRCDIR
   cd 3rd/luamake
   ./compile/install.sh
   cd ../..
