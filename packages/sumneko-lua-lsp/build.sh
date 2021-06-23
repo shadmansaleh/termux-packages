@@ -9,12 +9,15 @@ TERMUX_PKG_BUILD_DEPENDS="ninja"
 TERMUX_PKG_BUILD_IN_SRC=true
 
 termux_step_make() {
+  sudo apt update -y
+  sudo apt install ninja-build -y
   git submodule update --recommend-shallow --init --recursive
   cd 3rd/luamake
   ./compile/install.sh
   cd ../..
   ./3rd/luamake/luamake rebuild
-  tar -zvcf ./sumneko-lua-lsp.tar.gz .
+  tar -zcf ../sumneko-lua-lsp.tar.gz .
+  mv ../sumneko-lua-lsp.tar.gz .
 }
 
 termux_step_make_install() {
