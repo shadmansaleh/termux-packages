@@ -4,6 +4,7 @@ TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_MAINTAINER="@shadmansaleh"
 TERMUX_PKG_VERSION=2.0.1
 TERMUX_PKG_SRCURL=https://github.com/sumneko/lua-language-server.git
+TERMUX_PKG_GIT_BRANCH="master"
 TERMUX_PKG_BUILD_DEPENDS="ninja"
 TERMUX_PKG_HOSTBUILD=true
 
