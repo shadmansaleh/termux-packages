@@ -2,16 +2,13 @@ TERMUX_PKG_HOMEPAGE=http://www.inf.puc-rio.br/~roberto/lpeg
 TERMUX_PKG_DESCRIPTION="Lsp server for lua"
 TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_MAINTAINER="@shadmansaleh"
-TERMUX_PKG_VERSION="master"
+TERMUX_PKG_VERSION=2.0.1
 TERMUX_PKG_SRCURL=https://github.com/sumneko/lua-language-server.git
-TERMUX_PKG_GIT_BRANCH=$TERMUX_PKG_VERSION
+TERMUX_PKG_GIT_BRANCH="master"
 TERMUX_PKG_BUILD_DEPENDS="ninja"
-TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_HOSTBUILD=true
 
-termux_step_make() {
-  sudo apt update -y
-  sudo apt install ninja-build -y
-  git submodule update --recommend-shallow --init --recursive
+termux_step_host_build() {
   cd 3rd/luamake
   ./compile/install.sh
   cd ../..
