@@ -5,10 +5,12 @@ TERMUX_PKG_MAINTAINER="@shadmansaleh"
 TERMUX_PKG_VERSION=2.0.1
 TERMUX_PKG_SRCURL=https://github.com/sumneko/lua-language-server.git
 TERMUX_PKG_GIT_BRANCH="master"
-TERMUX_PKG_BUILD_DEPENDS="ninja"
+#TERMUX_PKG_BUILD_DEPENDS="ninja"
 TERMUX_PKG_HOSTBUILD=true
 
 termux_step_host_build() {
+  sudo apt update -y
+  sudo apt install ninja-build -y
 	mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/build
 	cd $TERMUX_PKG_HOSTBUILD_DIR/build
   git clone --depth 1 https://github.com/sumneko/lua-language-server.git
