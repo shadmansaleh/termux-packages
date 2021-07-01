@@ -13,9 +13,7 @@ termux_step_host_build() {
 	cd $TERMUX_PKG_HOSTBUILD_DIR/build
   git clone --depth 1 https://github.com/sumneko/lua-language-server.git
   cd lua-language-server
-  git 
-  cd lua-language-server
-  git submodule update --recommend-shallow --init --recursive
+  git submodule update --init --recursive --recommend-shallow
   cd 3rd/luamake
   ./compile/install.sh
   cd ../..
