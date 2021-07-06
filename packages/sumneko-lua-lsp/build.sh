@@ -10,18 +10,22 @@ TERMUX_PKG_HOSTBUILD=true
 TERMUX_PKG_BUILD_IN_SRC=true
 
 termux_step_host_build() {
+	mkdir -p $TERMUX_PKG_HOSTBUILD_DIR
+  cd $TERMUX_PKG_HOSTBUILD_DIR
   sudo apt update -y
   sudo apt install ninja-build -y
-  cd $TERMUX_PKG_SRCDIR
-  cd 3rd/luamake
+  git clone --depth 1 https://github.com/actboy168/luamake
+  cd luamake
+  git submodule update --init --recommend-shallow
   ./compile/install.sh
 }
 
 termux_step_make() {
   cd $TERMUX_PKG_SRCDIR
-  ./3rd/luamake/luamake rebuild
+  $TERMUX_PKG_HOSTBUILD_DIR/luamake/luamake rebuild
   rm -rf ./3rd/luamake
-  rm -rf ./**/.git/
+  rm -rf ./.git/
+	rm -rf $TERMUX_PKG_HOSTBUILD_DIR
   tar -zcf ../sumneko-lua-lsp.tar.gz .
 }
 
