@@ -5,24 +5,26 @@ TERMUX_PKG_MAINTAINER="@shadmansaleh"
 TERMUX_PKG_VERSION=2.0.1
 TERMUX_PKG_SRCURL=https://github.com/sumneko/lua-language-server.git
 TERMUX_PKG_GIT_BRANCH="master"
-#TERMUX_PKG_BUILD_DEPENDS="ninja"
+TERMUX_PKG_BUILD_DEPENDS="ninja"
 TERMUX_PKG_HOSTBUILD=true
+TERMUX_PKG_BUILD_IN_SRC=true
 
 termux_step_host_build() {
   sudo apt update -y
   sudo apt install ninja-build -y
-	mkdir -p $TERMUX_PKG_HOSTBUILD_DIR/build
-	cd $TERMUX_PKG_HOSTBUILD_DIR/build
-  git clone --depth 1 https://github.com/sumneko/lua-language-server.git
-  cd lua-language-server
-  git submodule update --init --recursive --recommend-shallow
+  cd $TERMUX_PKG_SRCDIR
   cd 3rd/luamake
   ./compile/install.sh
-  cd ../..
+}
+
+termux_step_make() {
+  cd $TERMUX_PKG_SRCDIR
   ./3rd/luamake/luamake rebuild
-  tar -zcf $TERMUX_PKG_HOSTBUILD_DIR/build/sumneko-lua-lsp.tar.gz .
+  rm -rf ./3rd/luamake
+  rm -rf ./**/.git/
+  tar -zcf ../sumneko-lua-lsp.tar.gz .
 }
 
 termux_step_make_install() {
-	install -Dm600 $TERMUX_PKG_HOSTBUILD_DIR/build/sumneko-lua-lsp.tar.gz "$TERMUX_PREFIX"/share/sumneko-lua-lsp/sumneko-lua-lsp.tar.gz
+	install -Dm600 $TERMUX_PKG_SRCDIR/../sumneko-lua-lsp.tar.gz "$TERMUX_PREFIX"/share/sumneko-lua-lsp/sumneko-lua-lsp.tar.gz
 }
